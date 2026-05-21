@@ -4,7 +4,7 @@
     <div class="content">
       <div :class="`star${index}`" v-for="index in 6" :key="index"></div>
       <el-tooltip content="暗黑模式切换" effect="dark" placement="top">
-        <SwitchDark class="dark" />
+        <SwitchDark />
       </el-tooltip>
       <el-tooltip content="水印是否显示" effect="dark" placement="top">
         <el-switch class="watermark" active-text="水印" v-model="isWatermark" />

@@ -4,7 +4,7 @@
     <div class="content">
       <div :class="`star${index}`" v-for="index in 6" :key="index"></div>
       <el-tooltip content="暗黑模式切换" effect="dark" placement="top">
-        <SwitchDark class="dark" />
+        <SwitchDark />
       </el-tooltip>
       <el-tooltip content="水印是否显示" effect="dark" placement="top">
         <el-switch class="watermark" active-text="水印" v-model="isWatermark" />
@@ -120,17 +120,15 @@ const handleLogin = async (formEl: FormInstance | undefined) => {
     userStore
       .Login(loginForm)
       .then(async (res: any) => {
-        if (res.success) {
-          tabStore.closeMultipleTab();
-          keepAliveStore.setKeepAliveName();
-          router.push({ path: "/" });
-          ElNotification({
-            title: getTimeState(),
-            message: `欢迎登录 Wocwin-Qiankun-Vue3主应用；${res.data.loginName === "wocwin" ? "超管账号" : "游客账号"}`,
-            type: "success",
-            duration: 3000
-          });
-        }
+        tabStore.closeMultipleTab();
+        keepAliveStore.setKeepAliveName();
+        router.push({ path: "/" });
+        ElNotification({
+          title: getTimeState(),
+          message: `欢迎登录 admin-Qiankun-Vue3主应用；${res.data.loginName === "admin" ? "超管账号" : "游客账号"}`,
+          type: "success",
+          duration: 3000
+        });
       })
       .finally(() => (loading.value = false));
   });
